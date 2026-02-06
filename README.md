@@ -1,1 +1,1 @@
-Heritage Sales Experience API
+Heritage Sales Process API
