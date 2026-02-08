@@ -1,0 +1,37 @@
+{
+  "sales": {
+    "transactionId": "Orange-002",
+    "customerName": "Alice Cruz",
+    "deliveryAddress": "Unit 12B, Sunshine Residences, Quezon City",
+    "customerContact": "+639188888888",
+    "customerAge": 28,
+    "customerGender": "F",
+    "totalAmount": 3596,
+    "paymentType": "Credit Card",
+    "transactionDate": "2025-10-05T14:30:00Z",
+    "source": "Orange App"
+  },
+  "salesItems": [
+    {
+      "itemId": "Orange-002-001",
+      "transactionId": "Orange-002",
+      "productName": "Harry Potter and the Philosopher's Stone",
+      "price": 799,
+      "quantity": 1
+    },
+    {
+      "itemId": "Orange-002-002",
+      "transactionId": "Orange-002",
+      "productName": "Harry Potter and the Prisoner of Azkaban",
+      "price": 899,
+      "quantity": 2
+    },
+    {
+      "itemId": "Orange-002-003",
+      "transactionId": "Orange-002",
+      "productName": "Harry Potter and the Goblet of Fire",
+      "price": 999,
+      "quantity": 1
+    }
+  ]
+}

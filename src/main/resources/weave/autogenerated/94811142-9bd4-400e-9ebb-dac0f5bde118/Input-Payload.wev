@@ -1,0 +1,20 @@
+%dw 2.0
+
+type auto_94811142_9bd4_400e_9ebb_dac0f5bde118_Input_Payload = {
+  salesItems: Array<{    itemId?: String,     quantity?: Number,     price?: Number,     transactionId?: String,     productName?: String,     _?: Any  }> {"description": "List of items associated with the sales transaction"}, 
+  sales: {
+    customerAge?: Number, 
+    totalAmount?: Number, 
+    customerContact?: String, 
+    deliveryAddress?: String, 
+    customerGender?: String, 
+    source?: String, 
+    transactionDate?: String, 
+    transactionId: String, 
+    customerName?: String, 
+    paymentType?: String, 
+    _?: Any
+  }, 
+  _?: Any
+}
+

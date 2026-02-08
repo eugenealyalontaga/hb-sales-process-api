@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd ">
+    <http:listener-config name="hb-sales-process-api-httpListenerConfig">
+        <http:listener-connection host="${httpListener.host}" port="${httpListener.port}" />
+    </http:listener-config>
+    <apikit:config name="hb-sales-process-api-config" api="hb-sales-process-api.raml" outboundHeadersMapName="outboundHeaders" httpStatusVarName="httpStatus" />
+    <flow name="hb-sales-process-api-main">
+        <http:listener config-ref="hb-sales-process-api-httpListenerConfig" path="${httpListener.path}">
+            <http:response statusCode="#[vars.httpStatus default 200]">
+                <http:headers><![CDATA[#[vars.outboundHeaders default {}]]]></http:headers>
+            </http:response>
+            <http:error-response statusCode="#[vars.httpStatus default 500]">
+                <http:body><![CDATA[#[payload]]]></http:body>
+                <http:headers><![CDATA[#[vars.outboundHeaders default {}]]]></http:headers>
+            </http:error-response>
+        </http:listener>
+        <apikit:router config-ref="hb-sales-process-api-config" />
+		<error-handler ref="hb-sales-process-api_APIKIT_Error_Handler" />
+    </flow>
+    <flow name="get:\sales:hb-sales-process-api-config">
+        <flow-ref doc:name="impl-get-sales-process-flows-subflow" doc:id="189442ca-4973-4439-bf12-3ab5e89b172e" name="impl-get-sales-process-flows-subflow"/>
+		<error-handler ref="hb-sales-process-api_Global_Error_Handler" />
+    </flow>
+    <flow name="post:\sales:application\json:hb-sales-process-api-config">
+        <flow-ref doc:name="impl-create-sales-process-flows-subflow" doc:id="3875f43d-c028-4fbf-8cb1-177af1ac7763" name="impl-create-sales-process-flows-subflow"/>
+		<error-handler ref="hb-sales-process-api_Global_Error_Handler" />
+    </flow>
+</mule>

@@ -1,0 +1,88 @@
+#%RAML 1.0 DataType
+type: object
+properties:
+  sales:
+    type: object
+    properties:
+      transactionId:
+        type: string
+        required: true
+        description: "Unique identifier for the sales transaction"
+        example: "Orange-002"
+      customerName:
+        type: string
+        required: false
+        description: "Full name of the customer"
+        example: "Alice Cruz"
+      deliveryAddress:
+        type: string
+        required: false
+        description: "Customer's delivery address"
+        example: "Unit 12B, Sunshine Residences, Quezon City"
+      customerContact:
+        type: string
+        required: false
+        description: "Customer's contact number"
+        example: "+639188888888"
+      customerAge:
+        type: integer
+        required: false
+        description: "Customer's age"
+        example: 28
+      customerGender:
+        type: string
+        required: false
+        description: "Customer's gender"
+        example: "F"
+      totalAmount:
+        type: integer
+        required: false
+        description: "Total amount for the sales transaction"
+        example: 3596
+      paymentType:
+        type: string
+        required: false
+        description: "Mode of payment"
+        example: "Credit Card"
+      transactionDate:
+        type: string
+        required: false
+        description: "Timestamp of the transaction in ISO 8601 format"
+        example: "2025-10-05T14:30:00Z"
+      source:
+        type: string
+        required: false
+        description: "Source of the sales transaction"
+        example: "API"
+  salesItems:
+    type: array
+    required: true
+    description: "List of items associated with the sales transaction"
+    items:
+      type: object
+      properties:
+        itemId:
+          type: string
+          required: false
+          description: "Unique identifier for the sales item"
+          example: "Orange-002-001"
+        transactionId:
+          type: string
+          required: false
+          description: "Identifier of the parent sales transaction"
+          example: "Orange-002"
+        productName:
+          type: string
+          required: false
+          description: "Name of the product"
+          example: "Harry Potter and the Philosopher's Stone"
+        price:
+          type: integer
+          required: false
+          description: "Unit price of the product"
+          example: 799
+        quantity:
+          type: integer
+          required: false
+          description: "Quantity of the product in this transaction"
+          example: 1
