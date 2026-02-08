@@ -7,8 +7,8 @@ http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/cu
 http://www.mulesoft.org/schema/mule/heritage-bookshop-database-system-api http://www.mulesoft.org/schema/mule/heritage-bookshop-database-system-api/current/mule-heritage-bookshop-database-system-api.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
 	<sub-flow name="sys-database-flows-subflow" doc:id="df166224-7832-4b53-a3e0-3ca6e87ec688" >
-		<logger level="INFO" doc:name="START sys-sql-database-subflow" doc:id="6ef311c0-3fab-444d-abb3-b83b411bb4f7" message="#[%dw 2.0&#10;output application/java&#10;---&#10;'START sys-sql-database-subflow ' ++&#10;'transactionId:' ++ correlationId ++&#10;' payload=' ++ write(payload, 'application/json')]"/>
+		<logger level="INFO" doc:name="START sys-sql-database-subflow" doc:id="6ef311c0-3fab-444d-abb3-b83b411bb4f7" message="#[%dw 2.0&#10;output application/java&#10;---&#10;'START sys-database-flows-subflow ' ++&#10;'transactionId:' ++ correlationId ++&#10;' payload=' ++ write(payload, 'application/json')]"/>
 		<heritage-bookshop-database-system-api:database-call doc:name="POST hb-database-system-api" doc:id="9c33bb77-9a7e-4757-8bea-30ed13fc1d2f" config-ref="Heritage_Bookshop_Database_System_API_Config"/>
-		<logger level="INFO" doc:name="END sys-sql-database-select" doc:id="7109f1da-0145-4f90-8387-3e56736bd43f" message="#[%dw 2.0&#10;output application/java&#10;---&#10;'END sys-sql-database-subflow ' ++&#10;'transactionId:' ++ correlationId ++&#10;' payload=' ++ write(payload, 'application/json')]"/>
+		<logger level="INFO" doc:name="END sys-database-flows-subflow" doc:id="7109f1da-0145-4f90-8387-3e56736bd43f" message="#[%dw 2.0&#10;output application/java&#10;---&#10;'END sys-database-flows-subflow ' ++&#10;'transactionId:' ++ correlationId ++&#10;' payload=' ++ write(payload, 'application/json')]"/>
 	</sub-flow>
 </mule>
